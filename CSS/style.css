@@ -327,9 +327,33 @@ td a{
     white-space: nowrap;
 }
 .filterbtn2{
-    width: 100%;
+    width: 100%;  
 }
 
+.header3{
+    background-color: #f0f2f7;
+    height: 100vh;
+}
+
+.detailpagebg{
+    height: 75%;
+}
+
+.detailpage{
+    background-color: #c0e0f5;
+    border:2px solid #039afe;
+    border-radius: 5px;
+    
+}
+
+.title{
+   font-size: 18px; 
+}
+
+.subtitle{
+    color: #039afe;
+    font-size: 20px;
+}
 
 
 
@@ -342,16 +366,26 @@ td a{
     }
 
     .filterbtn{
-        width: 40%;
-        font-size: 12px;
-        float: right;
+        width: 120%;
+        font-size: 10px;
+       
     }
     .filterbtn2{
-        width: 40%;
-        float: right;
+        width:100%;
+        font-size: 18px;
+        margin: 0px;
+        padding: 0px;
+        
     }
 
     .header{
+        background-color: #f0f2f7;
+        position: absolute;
+        z-index: -1;
+        
+    }
+
+    .header3{
         background-color: #f0f2f7;
         position: absolute;
         z-index: -1;
@@ -361,6 +395,14 @@ td a{
     .item{
         height: 100vh;
     }
+    .title{
+        font-size: 10px; 
+     }
+     
+     .subtitle{
+         color: #039afe;
+         font-size: 12px;
+     }
     
 }
 
