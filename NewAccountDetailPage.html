@@ -8,6 +8,9 @@
     <title>Account List Page</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" >
     <link rel="stylesheet" href="/CSS/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </head>
 
@@ -155,11 +158,11 @@
                                             <b>Contacts</b>
                                         </div>
                                         <div class="col-5 col-sm-5 col-md-2 mt-4">
-                                            <button type="button" class="btn btn-primary w-100 " data-bs-toggle="modal" data-bs-target="#contactModal">Add Contact</button>
+                                            <button type="button" class="btn btn-primary w-100 " data-bs-toggle="modal" data-bs-target="#exampleModal">Add Contact</button>
                                         </div>
 
                                         <!-- Modal -->
-                                        <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog modal-xl" style="margin-right:20px">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -168,7 +171,7 @@
                                                 </div>
                                                
 
-                                                    <form class=" m-2"  id="contactForm">
+                                                    <form class=" m-2  contact-form"  id="contactForm" onsubmit="return false">
                                                         <div class="modal-body">
                                                         
                                                             <div class="row">
@@ -201,8 +204,8 @@
                                                             
                                                 
                                                                 <div class="col-sm-6">
-                                                                    <label for="title" class="form-label mt-3">Title <span style="color:red">*</span></label>
-                                                                    <input type="text" class="form-control" id="title" placeholder="" required >
+                                                                    <label for="title" class="form-label mt-3">Title </label>
+                                                                    <input type="text" class="form-control" id="title" placeholder="">
                                                                 </div>
                                                             
                                                 
@@ -212,7 +215,7 @@
                                                         
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" onclick="return creatContact();">Create</button>
+                                                            <button type="submit" class="btn btn-primary">Create</button>
                                                         </div>
 
                                                     </form>

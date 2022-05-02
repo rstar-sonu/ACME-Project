@@ -1,4 +1,4 @@
-
+let  accountUser=[];
 //Constructor
 function AccountData(accountName, accountNumber, email, phone, address, city, state, country, zip) {
     this.accountName = accountName;
@@ -19,17 +19,19 @@ function Display() {
 
 
 // Add methods to display prototype
-Display.prototype.add = function (accountData) {
+Display.prototype.addGrid = function (accountData) {
     tableBody = document.getElementById('tableBody');
+    for(let i=0; i<accountUser.length; i++){
     let uiString = `<tr> 
-                        <td>${accountData.accountName}</td>
-                        <td>${accountData.accountNumber}</td>
-                        <td> <div>${accountData.country}
+                        <td>${accountUser[i].accountName}</td>
+                        <td>${accountUser[i].accountNumber}</td>
+                        <td> <div>${accountUser[i].country}
                             <button class ="btn btn-primary viewbtn" onclick="location.href='/NewAccountDetailPage.html'">View</button> </div>
                         </td>                
                     </tr>`;
-
+                
     tableBody.innerHTML += uiString;
+    }
 }
 
 
@@ -60,8 +62,25 @@ function creat() {
     let accountData = new AccountData(accountName, accountNumber, email, phone, address, city, state, country, zip)
 
 
+
+    let accountUserData=localStorage.getItem("accountUserData");
+
+    console.log("testing2",accountData);
+    if(accountUserData==null){
+        accountUser=[];
+
+    }
+    else{
+        accountUser=JSON.parse(accountUserData);
+    }
+
+    accountUser.push(accountData);
+    let allValue = localStorage.setItem("accountUserData", JSON.stringify(accountUser));
+    console.log('testinh',allValue);
+
+
     let display = new Display();
-    display.add(accountData);
+    display.addGrid(accountData);
     display.clear();
 
 
@@ -70,6 +89,8 @@ function creat() {
     // displayName.innerHTML=accountName.value;
 
 }
+
+
 
 
 (function () {
@@ -165,6 +186,31 @@ function creatContact() {
     contactdisplay.clear2();
 
 };
+
+
+(function () {
+    'use strict';
+    window.addEventListener('load', function () {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var contactForms = document.getElementsByClassName('contact-form');
+        // Loop over them and prevent submission
+        // @ts-ignore
+        var validation = Array.prototype.filter.call(contactForms, function (form) {
+            form.addEventListener('submit', function (event) {
+                if (form.checkValidity() === false) {
+                    // event.preventDefault();
+                    // event.stopPropagation();
+                } else {
+                    creatContact()
+                    $('#exampleModal').modal('hide')
+                    
+                }
+
+                // form.classList.add('was-validated');
+            }, false);
+        });
+    }, false);
+})();
 
 
 
