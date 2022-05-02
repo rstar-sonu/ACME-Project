@@ -214,7 +214,7 @@
  }
 
  .serv{
-     margin-left: 30px;
+     margin-left: 10px;
  }
 .das{
     background-color: #131367;
@@ -327,7 +327,7 @@ td a{
     white-space: nowrap;
 }
 .filterbtn2{
-    width: 100%;  
+    width: 80%;  
 }
 
 .header3{
@@ -335,13 +335,11 @@ td a{
     height: 100vh;
 }
 
-.detailpagebg{
-    height: 75%;
-}
+
 
 .detailpage{
-    background-color: #c0e0f5;
-    border:2px solid #039afe;
+    background-color: #ebf4ff;
+    border:2px solid #c6dffd;
     border-radius: 5px;
     
 }
@@ -351,13 +349,37 @@ td a{
 }
 
 .subtitle{
-    color: #039afe;
+    color: #82b9fa;
     font-size: 20px;
 }
 
+#email_error , #pass_error{
+    color: red;
+    margin-top: 5px;
+    border: 1px solid #ef9a9a;
+    text-align: center;
+    background-color: rgba(255, 0, 0, 0.1);
+    padding: 5px;
+    font-size: 14px;
+    display: none;
+    
+}
 
-
-
+.viewbtn{
+    height: 25px;
+    width: 60px;
+    font-size: 16;
+    padding: 0;
+    display: none;
+    float: right;
+    
+}
+.tablefs tr:hover .viewbtn{
+    display: block;
+}
+.contactText{
+    color: #039afe;
+}
 
 @media (max-width: 550px) {
     .tablefs{
@@ -375,6 +397,7 @@ td a{
         font-size: 18px;
         margin: 0px;
         padding: 0px;
+        
         
     }
 
@@ -400,9 +423,19 @@ td a{
      }
      
      .subtitle{
-         color: #039afe;
+         color: #82b9fa;
          font-size: 12px;
      }
+
+     .viewbtn{
+        height: 16px;
+        font-size: 10px;
+        width: 40px;
+        padding: 0;
+        display: none;
+        float: right;
+        
+    }
     
 }
 

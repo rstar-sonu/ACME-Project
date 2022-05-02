@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>SignUp Page</title>
     <link rel="stylesheet" href="/CSS/style.css">
 </head>
 <body>
@@ -32,24 +32,24 @@
 
                             <form class="p-5" id="form" action="">
 
-                                <h3 class="text-dark fw-bolder fs-1 mb-5 text-start">LogIn</h3>
+                                <h3 class="text-dark fw-bolder fs-1 mb-5 text-start">SignUp</h3>
 
                                 <div class="form-floating mb-3">
-                                    <input type="email" pattern="[^ @]*@[^ @]*"  class="form-control" id="email" placeholder="name@example.com" required >
+                                    <input type="email" pattern="[^ @]*@[^ @]*"  class="form-control" id="getemail" placeholder="name@example.com" required >
                                     <label for="floatingInput">Email </label>
                                     <div id="email_error">Invalid Email</div>
                                     
                                 </div>
 
                                 <div class="form-floating">
-                                    <input type="password" class="form-control" id="password" placeholder="Password" required  >
+                                    <input type="password" class="form-control" id="getpassword" placeholder="Password" required  >
                                     <label for="floatingPassword">Password</label>
                                     <div id="pass_error">Invalid Password</div>
                                 </div>
 
                                 
 
-                                 <button type="submit" class="btn btn-primary w-100 mt-4" id="btn" onclick="return Validation()"> Continue</button>
+                                 <button type="submit" class="btn btn-primary w-100 mt-4" id="btn" onclick=" return getData()"> Continue</button>
 
                                 <div class="mt-2 text-end">
                                     <a href="#" class="text-primary fw-bold text-decoration-none">Forgot Password? </a>
@@ -58,7 +58,7 @@
                                 
 
                                 <div class="fw-normal text-muted mb-3 mt-5 text-center">
-                                 New User? <a href="/Signup.html" class="text-primary fw-bold text-decoration-none">SignUp </a>
+                                 Existing User? <a href="/Login.html" class="text-primary fw-bold text-decoration-none">Login </a>
                                 </div>
 
                             </form>

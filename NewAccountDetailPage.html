@@ -51,7 +51,7 @@
 
         
             <div class="col-md-10 col-lg-10 col-sm-10  header3 ">
-                <div class="row head m-3 ">
+                <div class="row head mt-3 m-0 ">
                     
                     <div class="col-md-4  d-none d-sm-block ">
                         <div class="m-2">Hi! Welcome back <b> Devion</b></div>
@@ -94,62 +94,154 @@
                         </div>
 
                         
-                            
+                                <div id="Detail">
                                     <div class=" detailpage ">
-                                        <div class="row m-3 ">
-                                            <div class="col-4 col-sm-4 col-md-4 mt-3">
-                                               <span class="title">Name:</span> <br>
-                                               <span class="subtitle">Sonu Kumar</span>
+                                        <div class="row m-3" >
+                                            <div class="col-6 col-sm-6 col-md-6 mt-3">
+                                               <span class="title">Account Name:</span> <br>
+                                               <span class="subtitle" id="displayName">Isabel Inc</span>
                                             </div>
 
-                                            <div class="col-8 col-sm-8 col-md-8 mt-3">
+                                            <div class="col-6 col-sm-6 col-md-6 mt-3">
+                                                <span class="title">Account Number:</span> <br>
+                                                <span class="subtitle" id="displayAccountNo">X12345</span>
+                                             </div>
+
+                                            <div class="col-7 col-sm-7 col-md-6 mt-4">
                                                 <span class="title">Email:</span> <br>
-                                                <span class="subtitle">sonu.kumar@gmail.com</span>
+                                                <span class="subtitle" id="displayEmail">sonu.kumar@gmail.com</span>
                                             </div>
 
-                                            <div class="col-4 col-sm-4 col-md-4 mt-4">
-                                                <span class="title">Country:</span> <br>
-                                                <span class="subtitle">India</span>
-                                            </div>
-                                            
-                                            <div class="col-8 col-sm-8 col-md-8 mt-4">
-                                                <span class="title">State:</span> <br>
-                                                <span class="subtitle">Bihar</span>
+                                            <div class="col-5 col-sm-5 col-md-5 mt-4">
+                                                <span class="title">Phone:</span> <br>
+                                                <span class="subtitle">1234567890</span>
                                             </div>
 
-                                            <div class="col-4 col-sm-4 col-md-4 mt-4">
+                                            <div class="col-12 col-sm-12 col-md-6 mt-4">
+                                                <span class="title">Address:</span> <br>
+                                                <span class="subtitle">At-Sidhpur, Po+Ps-Palanwa, Raxaul, East Champaran</span>
+                                            </div>
+
+                                            <div class="col-6 col-sm-6 col-md-6 mt-4">
                                                 <span class="title">City:</span> <br>
                                                 <span class="subtitle">Raxaul</span>
                                             </div>
 
-                                            <div class="col-8 col-sm-8 col-md-8 mt-4">
-                                                <span class="title">Created Date:</span> <br>
-                                                <span class="subtitle">09/02/2020</span>
+                                            <div class="col-6 col-sm-6 col-md-3 mt-4">
+                                                <span class="title">State:</span> <br>
+                                                <span class="subtitle">Bihar</span>
                                             </div>
 
-                                            <div class="col-4 col-sm-4 col-md-4 mt-4">
+                                            <div class="col-6 col-sm-6 col-md-3 mt-4">
+                                                <span class="title">Country:</span> <br>
+                                                <span class="subtitle">India</span>
+                                            </div>
+                                            
+                                            <div class="col-6 col-sm-6 col-md-3 mt-4">
                                                 <span class="title">Zip:</span> <br>
                                                 <span class="subtitle">845440</span>
                                             </div>
 
-                                            <div class="col-8 col-sm-8 col-md-8 mt-4">
-                                                <span class="title">Status:</span> <br>
-                                                <span class="subtitle">Engagement</span>
-                                            </div>
-
-                                            <div class="col-12 col-sm-12 col-md-12 mt-4">
-                                                <span class="title">Address:</span> <br>
-                                                <span class="subtitle">At-Sidhpur, Po+Ps-Palanwa, Raxaul, East Champaran</span>
-                                            </div>
+                                           
                                             
                                         </div>
 
                                     </div>
+                                
+                                </div>   
 
-                                    
+                                    <div class="row">
+                                        <div class="col-7 col-sm-7 col-md-10 mt-4">
+                                            <b>Contacts</b>
+                                        </div>
+                                        <div class="col-5 col-sm-5 col-md-2 mt-4">
+                                            <button type="button" class="btn btn-primary w-100 " data-bs-toggle="modal" data-bs-target="#contactModal">Add Contact</button>
+                                        </div>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-xl" style="margin-right:20px">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">New Contact</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                               
+
+                                                    <form class=" m-2"  id="contactForm">
+                                                        <div class="modal-body">
+                                                        
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <label for="firstName" class="form-label mt-3">First Name <span style="color:red">*</span></label>
+                                                                    <input type="text" class="form-control" id="firstName" placeholder=""  required >
+                                                                </div>
+                                                
+                                                                <div class="col-sm-6">
+                                                                    <label for="lastName" class="form-label mt-3">Last Number <span style="color:red">*</span></label>
+                                                                    <input type="text" class="form-control" id="lastName" placeholder=""  required >
+                                                                </div>
+                                                
+                                                
+                                                                <div class="col-sm-6">
+                                                                    <label for="email" class="form-label mt-3">Email <span style="color:red">*</span></label>
+                                                                    <input type="email" class="form-control" id="contactEmail" placeholder=""  required>
+                                                                </div>
+
+                                                                <div class="col-sm-6">
+                                                                    <label for="email" class="form-label mt-3">Phone <span style="color:red">*</span></label>
+                                                                    <input type="text" class="form-control" id="contactPhone" placeholder="" required>
+                                                                </div>
+                                                
+                                            
+                                                                <!-- <div class="col-sm-6">
+                                                                    <label for="address" class="form-label mt-3">Account Name</label>
+                                                                    <input type="text" class="form-control" id="address" placeholder="" required >
+                                                                </div> -->
+                                                            
+                                                
+                                                                <div class="col-sm-6">
+                                                                    <label for="title" class="form-label mt-3">Title <span style="color:red">*</span></label>
+                                                                    <input type="text" class="form-control" id="title" placeholder="" required >
+                                                                </div>
+                                                            
+                                                
+                                                            </div>                         
+                                                    
+                                                        </div> 
+                                                        
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" onclick="return creatContact();">Create</button>
+                                                        </div>
+
+                                                    </form>
+
+                                                
+                                               
+                                            
+                                            </div>
+                                        </div>
+
+                                    </div>
                                     
 
-                        
+                                    <div class="row" id="contactDiv">
+                                        <!-- <div class="col-md-5 detailpage m-3 p-2">
+                                            <span><span>Name:</span> Sonu Kumar</span><br>
+                                            <span><span>Title:</span> Manager</span><br>
+                                            <span><span>Email:</span> sonu.kumar@rstartect.com</span><br>
+                                            <span><span>Phone:</span> 0123456789</span><br>
+                                        </div> -->
+
+                   
+
+                    
+                                    </div>
+
+                                   
+
+                                   
                                         
 
             
@@ -164,7 +256,7 @@
     </div>
     
 
-
+<script src="/account.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
