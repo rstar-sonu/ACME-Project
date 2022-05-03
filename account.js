@@ -21,23 +21,19 @@ function Display() {
 // Add methods to display prototype
 Display.prototype.addGrid = function (accountData) {
     tableBody = document.getElementById('tableBody');
+    tableBody.innerHTML =" ";
 
-    // let x= tableBody.rows.length;
-    // while(--x){
-    //     tableBody.deleteRow(x);
-    // }
-
-    //for(let i=0; i<accountUser.length; i++){
+    for(let i=0; i<accountUser.length; i++){
     let uiString = `<tr> 
-                        <td>${accountData.accountName}</td>
-                        <td>${accountData.accountNumber}</td>
-                        <td> <div>${accountData.country}
+                        <td>${accountUser[i].accountName}</td>
+                        <td>${accountUser[i].accountNumber}</td>
+                        <td> <div>${accountUser[i].country}
                             <button class ="btn btn-primary viewbtn" onclick="location.href='NewAccountDetailPage.html'">View</button> </div>
                         </td>                
                     </tr>`;
                 
     tableBody.innerHTML += uiString;
-   // }
+   }
 }
 
 
@@ -82,7 +78,7 @@ function creat() {
     localStorage.setItem("accountUserData", JSON.stringify(accountUser));
     console.log('testing',accountUser);
 
-
+    
     let display = new Display();
     display.addGrid(accountData);
     display.clear();
@@ -124,8 +120,47 @@ function creat() {
 
 
 
+//Transfer data one page to another page
+function DisplayonDiv(){
 
+    let displayName = document.getElementById("displayName");
+    let displayAccountNo = document.getElementById("displayAccountNo"); 
+    let displayEmail  = document.getElementById("displayEmail"); 
+    let displayPhone = document.getElementById("displayPhone"); 
+    let displayAddress = document.getElementById("displayAddress");
+    let displayCity = document.getElementById("displayCity");
+    let displayState = document.getElementById("displayState");
+    let displayCountry = document.getElementById("displayCountry");
+    let displayZip = document.getElementById("displayZip");
+   
+   
+    //displayName.textContent='hello'
+    
+    
+    let accountData = new AccountData(accountName, accountNumber, email, phone, address, city, state, country, zip)
+    
+    
+    
+    let accountUserData=localStorage.getItem("accountUserData");
+    if(accountUserData==null){
+        accountUser=[];
+    }
+    
+    else{
+        accountUser=JSON.parse(accountUserData);
+    }
+    
+    accountUser.push(accountData);
+    localStorage.setItem("accountUserData", JSON.stringify(accountUser));
+    console.log('testing',accountUser);
+    
+    for(let i=0;i<accountUser.length;i++){
+        displayName.textContent=accountUser[i].accountName;
+    }
 
+    }
+
+    
 
 
 
