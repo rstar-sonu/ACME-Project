@@ -21,17 +21,23 @@ function Display() {
 // Add methods to display prototype
 Display.prototype.addGrid = function (accountData) {
     tableBody = document.getElementById('tableBody');
-    for(let i=0; i<accountUser.length; i++){
+
+    // let x= tableBody.rows.length;
+    // while(--x){
+    //     tableBody.deleteRow(x);
+    // }
+
+    //for(let i=0; i<accountUser.length; i++){
     let uiString = `<tr> 
-                        <td>${accountUser[i].accountName}</td>
-                        <td>${accountUser[i].accountNumber}</td>
-                        <td> <div>${accountUser[i].country}
+                        <td>${accountData.accountName}</td>
+                        <td>${accountData.accountNumber}</td>
+                        <td> <div>${accountData.country}
                             <button class ="btn btn-primary viewbtn" onclick="location.href='/NewAccountDetailPage.html'">View</button> </div>
                         </td>                
                     </tr>`;
                 
     tableBody.innerHTML += uiString;
-    }
+   // }
 }
 
 
@@ -64,19 +70,17 @@ function creat() {
 
 
     let accountUserData=localStorage.getItem("accountUserData");
-
-    console.log("testing2",accountData);
     if(accountUserData==null){
         accountUser=[];
-
     }
+
     else{
         accountUser=JSON.parse(accountUserData);
     }
 
     accountUser.push(accountData);
-    let allValue = localStorage.setItem("accountUserData", JSON.stringify(accountUser));
-    console.log('testinh',allValue);
+    localStorage.setItem("accountUserData", JSON.stringify(accountUser));
+    console.log('testing',accountUser);
 
 
     let display = new Display();
