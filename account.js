@@ -32,7 +32,7 @@ Display.prototype.addGrid = function (accountData) {
                         <td>${accountData.accountName}</td>
                         <td>${accountData.accountNumber}</td>
                         <td> <div>${accountData.country}
-                            <button class ="btn btn-primary viewbtn" onclick="location.href='/NewAccountDetailPage.html'">View</button> </div>
+                            <button class ="btn btn-primary viewbtn" onclick="location.href='NewAccountDetailPage.html'">View</button> </div>
                         </td>                
                     </tr>`;
                 

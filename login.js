@@ -32,7 +32,7 @@ let Validation = ()=>{
     let object =user.find(obj => obj.email == emailValue && obj.password == passValue);
 
     if(object!=null)
-    {document.getElementById("form").setAttribute("action" ,"/Dashbord.html");
+    {document.getElementById("form").setAttribute("action" ,"Dashbord.html");
     return;}
     else
     {
