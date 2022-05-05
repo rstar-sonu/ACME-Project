@@ -1,6 +1,21 @@
 let  accountUser=[];
+
+
+
+let myKeysValues = window.location.search;
+
+let urlParam = new URLSearchParams(myKeysValues);
+
+let param = urlParam.get('accountId');
+
+console.log(param);
+
+
+
+
 //Constructor
-function AccountData(accountName, accountNumber, email, phone, address, city, state, country, zip) {
+function AccountData(id,accountName, accountNumber, email, phone, address, city, state, country, zip) {
+    this.id = id;
     this.accountName = accountName;
     this.accountNumber = accountNumber;
     this.email = email;
@@ -17,9 +32,12 @@ function Display() {
 
 }
 
+let viewBtnClick = function(itemId){
+    location.href='NewAccountDetailPage.html?accountId='+itemId;
+}
 
 // Add methods to display prototype
-Display.prototype.addGrid = function (accountData) {
+Display.prototype.addGrid = function() {
     tableBody = document.getElementById('tableBody');
     tableBody.innerHTML =" ";
 
@@ -28,7 +46,7 @@ Display.prototype.addGrid = function (accountData) {
                         <td>${accountUser[i].accountName}</td>
                         <td>${accountUser[i].accountNumber}</td>
                         <td> <div>${accountUser[i].country}
-                            <button class ="btn btn-primary viewbtn" onclick="location.href='NewAccountDetailPage.html'">View</button> </div>
+                            <button class ="btn btn-primary viewbtn" id=viewbtn_${accountUser[i].id} onclick="viewBtnClick(${accountUser[i].id});">View</button> </div>
                         </td>                
                     </tr>`;
                 
@@ -61,7 +79,7 @@ function creat() {
     let country = document.getElementById('getCountry').value;
     let zip = document.getElementById('getZip').value;
     
-    let accountData = new AccountData(accountName, accountNumber, email, phone, address, city, state, country, zip)
+    let accountData = new AccountData(accountUser.length+0,accountName, accountNumber, email, phone, address, city, state, country, zip)
 
 
 
@@ -133,34 +151,31 @@ function DisplayonDiv(){
     let displayCountry = document.getElementById("displayCountry");
     let displayZip = document.getElementById("displayZip");
    
+
+    let displayData = localStorage.getItem("accountUserData", JSON.stringify(accountUser));
+
+   let alldisplayData=JSON.parse(displayData);
+
+   //for(let i=0; i<AlldisplayData.length;i++)
+    console.log('testiing for Display',alldisplayData);
+
+    displayName.textContent = alldisplayData[param].accountName;
+    displayAccountNo.textContent = alldisplayData[param].accountNumber;
+    displayEmail.textContent = alldisplayData[param].email;
+    displayPhone.textContent = alldisplayData[param].phone;
+    displayAddress.textContent = alldisplayData[param].address;
+    displayCity.textContent = alldisplayData[param].city;
+    displayState.textContent = alldisplayData[param].state;
+    displayCountry.textContent = alldisplayData[param].country;
+    displayZip.textContent = alldisplayData[param].zip;
    
-    //displayName.textContent='hello'
     
-    
-    let accountData = new AccountData(accountName, accountNumber, email, phone, address, city, state, country, zip)
-    
-    
-    
-    let accountUserData=localStorage.getItem("accountUserData");
-    if(accountUserData==null){
-        accountUser=[];
-    }
-    
-    else{
-        accountUser=JSON.parse(accountUserData);
-    }
-    
-    accountUser.push(accountData);
-    localStorage.setItem("accountUserData", JSON.stringify(accountUser));
-    console.log('testing',accountUser);
-    
-    for(let i=0;i<accountUser.length;i++){
-        displayName.textContent=accountUser[i].accountName;
-    }
 
     }
 
-    
+   function clearStorage(){
+    localStorage.clear();
+   } ;
 
 
 
