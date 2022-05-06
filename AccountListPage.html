@@ -160,115 +160,7 @@
                                 </span>
 
                                 <!-- Modal -->
-                                <div class="modal fade" id="exampleModal" tabindex="-1"
-                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-xl" style="margin-right:20px">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">New Account</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-
-
-                                            <form class=" m-2  needs-validation" id="accountForm"
-                                                onsubmit="return false" action="/NewAccountDetailPage.html">
-                                                <div class="modal-body">
-                                                    <div class="row">
-                                                        <div class="col-sm-6">
-                                                            <label for="accountName" class="form-label mt-3">Account
-                                                                Name <span style="color:red">*</span></label>
-                                                            <input type="text" class="form-control" id="getAccountName"
-                                                                placeholder="" required>
-                                                        </div>
-
-                                                        <div class="col-sm-6">
-                                                            <label for="accountNumber" class="form-label mt-3">Account
-                                                                Number <span style="color:red">*</span></label>
-                                                            <input type="text" class="form-control"
-                                                                id="getAccountNumber" placeholder="" required>
-                                                        </div>
-
-
-                                                        <div class="col-sm-6">
-                                                            <label for="email" class="form-label mt-3">Email <span
-                                                                    style="color:red">*</span></label>
-                                                            <input type="email" class="form-control" id="getEmail"
-                                                                placeholder="" required>
-                                                        </div>
-
-                                                        <div class="col-sm-6">
-                                                            <label for="phone" class="form-label mt-3">Phone <span
-                                                                    style="color:red">*</span></label>
-                                                            <input type="text" class="form-control" id="getPhone"
-                                                                placeholder="" minlength="10" maxlength="10" required>
-                                                        </div>
-
-                                                        <div class="col-12">
-                                                            <label for="address" class="form-label mt-3">Address <span
-                                                                    style="color:red">*</span></label>
-                                                            <input type="text" class="form-control" id="getAddress"
-                                                                placeholder="" required>
-                                                        </div>
-
-
-                                                        <div class="col-sm-6">
-                                                            <label for="city" class="form-label mt-3">City <span
-                                                                    style="color:red">*</span></label>
-                                                            <input type="text" class="form-control" id="getCity"
-                                                                placeholder="" required>
-                                                        </div>
-
-
-
-                                                        <div class="col-md-6">
-                                                            <label for="country" class="form-label mt-3">Country <span
-                                                                    style="color:red">*</span></label>
-                                                            <select class="form-select" id="getCountry" required
-                                                                onchange="stateDrop();">
-                                                                <option value="">Choose...</option>
-                                                                <option>India</option>
-                                                                <option>U.S.A</option>
-                                                            </select>
-                                                        </div>
-
-                                                        <div class="col-md-6">
-                                                            <label for="state" class="form-label mt-3">State <span
-                                                                    style="color:red">*</span></label>
-                                                            <select class="form-select" id="getState" required>
-                                                                <option value="">Choose...</option>
-                                                                <!-- <option>xyz</option>
-                                                                          <option>1xyz</option> -->
-                                                            </select>
-                                                        </div>
-
-
-
-                                                        <div class="col-sm-6">
-                                                            <label for="zip" class="form-label mt-3">Zip <span
-                                                                    style="color:red">*</span></label>
-                                                            <input type="text" class="form-control" id="getZip"
-                                                                placeholder="" required>
-                                                        </div>
-
-
-                                                    </div>
-
-
-                                                </div>
-
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-primary"
-                                                        id="creatAccount">Create</button>
-                                                    <!-- <input type = "submit" value = "Submit" /> -->
-                                                </div>
-                                            </form>
-
-                                        </div>
-                                    </div>
-                                </div>
+                               
 
                             </span>
                         </div>
@@ -334,7 +226,115 @@
 
 
             </div>
+            <div class="modal fade" id="exampleModal" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl" style="margin-right:20px">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">New Account</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
 
+
+                    <form class=" m-2  needs-validation" id="accountForm"
+                        onsubmit="return false" action="/NewAccountDetailPage.html">
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label for="accountName" class="form-label mt-3">Account
+                                        Name <span style="color:red">*</span></label>
+                                    <input type="text" class="form-control" id="getAccountName"
+                                        placeholder="" required>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <label for="accountNumber" class="form-label mt-3">Account
+                                        Number <span style="color:red">*</span></label>
+                                    <input type="text" class="form-control"
+                                        id="getAccountNumber" placeholder="" required>
+                                </div>
+
+
+                                <div class="col-sm-6">
+                                    <label for="email" class="form-label mt-3">Email <span
+                                            style="color:red">*</span></label>
+                                    <input type="email" class="form-control" id="getEmail"
+                                        placeholder="" required>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <label for="phone" class="form-label mt-3">Phone <span
+                                            style="color:red">*</span></label>
+                                    <input type="text" class="form-control" id="getPhone"
+                                        placeholder="" minlength="10" maxlength="10" required>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="address" class="form-label mt-3">Address <span
+                                            style="color:red">*</span></label>
+                                    <input type="text" class="form-control" id="getAddress"
+                                        placeholder="" required>
+                                </div>
+
+
+                                <div class="col-sm-6">
+                                    <label for="city" class="form-label mt-3">City <span
+                                            style="color:red">*</span></label>
+                                    <input type="text" class="form-control" id="getCity"
+                                        placeholder="" required>
+                                </div>
+
+
+
+                                <div class="col-md-6">
+                                    <label for="country" class="form-label mt-3">Country <span
+                                            style="color:red">*</span></label>
+                                    <select class="form-select" id="getCountry" required
+                                        onchange="stateDrop();">
+                                        <option value="">Choose...</option>
+                                        <option>India</option>
+                                        <option>U.S.A</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label for="state" class="form-label mt-3">State <span
+                                            style="color:red">*</span></label>
+                                    <select class="form-select" id="getState" required>
+                                        <option value="">Choose...</option>
+                                        <!-- <option>xyz</option>
+                                                  <option>1xyz</option> -->
+                                    </select>
+                                </div>
+
+
+
+                                <div class="col-sm-6">
+                                    <label for="zip" class="form-label mt-3">Zip <span
+                                            style="color:red">*</span></label>
+                                    <input type="text" class="form-control" id="getZip"
+                                        placeholder="" required>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary"
+                                data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary"
+                                id="creatAccount">Create</button>
+                            <!-- <input type = "submit" value = "Submit" /> -->
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
 
         </div>
 
