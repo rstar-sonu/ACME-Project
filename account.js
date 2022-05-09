@@ -273,25 +273,125 @@ function creatContact() {
 
 // Code for State Dropdown
 
-function stateDrop() {
-    let country = document.getElementById('getCountry').value;
+// function stateDrop() {
+//     let country = document.getElementById('getCountry').value;
 
-    if (country === "India") {
-        var array = ["Choose...", "Delhi", "Goa", "UP", "Maharashtra"];
+//     if (country === "India") {
+//         var array = ["Choose...", "Delhi", "Goa", "UP", "Maharashtra"];
+//     }
+
+//     else if (country === "U.S.A") {
+//         var array = ["Choose...", "Chicago", "Washington"];
+//     }
+
+//     else {
+//         var array = ["Choose..."];
+//     }
+//     let String = "";
+//     for (i = 0; i < array.length; i++) {
+//         String = String + "<option>" + array[i] + "</option>";
+//     }
+
+//     document.getElementById('getState').innerHTML = String;
+
+// }
+
+
+
+//code for api state and country
+
+
+let auth_token;
+
+$(document).ready(function () {
+  $.ajax({
+    type: 'get',
+    url: 'https://www.universal-tutorial.com/api/getaccesstoken',
+    success: function (data) {
+      auth_token = data.auth_token;
+      countryData(data.auth_token);
+    },
+    error: function (error) {
+      console.log('Page does not exist', error);
+    },
+    headers: {
+      "Accept": "application/json",
+      "api-token": "NTuTNxH234F1bxcXlUI5u3U5U6MkHntJCdwnktJ3GChzQx3qmDZfJf7Ra6rJgJolDpM",
+      "user-email": "sonukumar99.iimtgn@gmail.com"
     }
+  })
 
-    else if (country === "U.S.A") {
-        var array = ["Choose...", "Chicago", "Washington"];
+  $('#getCountry').change(function () {
+    stateData();
+  })
+  $('#getState').change(function () {
+    cityData();
+  })
+});
+
+
+function countryData(auth_token) {
+  $.ajax({
+    type: 'get',
+    url: 'https://www.universal-tutorial.com/api/countries/',
+    success: function (data) {
+      data.forEach(element => {
+        $('#getCountry').append('<option value = "' + element.country_name + '">' + element.country_name + '</option>')
+      });
+      // stateData(auth_token);
+    },
+    error: function (error) {
+      console.log('Page does not exist', error);
+    },
+    headers: {
+      "Authorization": "Bearer " + auth_token,
+      "Accept": "application/json"
     }
-
-    else {
-        var array = ["Choose..."];
-    }
-    let String = "";
-    for (i = 0; i < array.length; i++) {
-        String = String + "<option>" + array[i] + "</option>";
-    }
-
-    document.getElementById('getState').innerHTML = String;
-
+  })
 }
+
+
+function stateData() {
+  let countryName = $('#getCountry').val();
+  $.ajax({
+    type: 'get',
+    url: 'https://www.universal-tutorial.com/api/states/' + countryName,
+    success: function (data) {
+      $('#getState').empty();
+      data.forEach(element => {
+        $('#getState').append('<option value = "' + element.state_name + '">' + element.state_name + '</option>')
+      });
+      // cityData(auth_token);
+    },
+    error: function (error) {
+      console.log('Page does not exist', error);
+    },
+    headers: {
+      "Authorization": "Bearer " + auth_token,
+      "Accept": "application/json"
+    }
+  })
+}
+
+
+function cityData() {
+  let stateName = $('#state').val();
+  $.ajax({
+    type: 'get',
+    url: 'https://www.universal-tutorial.com/api/cities/' + stateName,
+    success: function (data) {
+      $('#city').empty();
+      data.forEach(element => {
+        $('#city').append('<option value = "' + element.city_name + '">' + element.city_name + '</option>')
+      });
+    },
+    error: function (error) {
+      console.log('Page does not exist', error);
+    },
+    headers: {
+      "Authorization": "Bearer " + auth_token,
+      "Accept": "application/json"
+    }
+  })
+}
+
