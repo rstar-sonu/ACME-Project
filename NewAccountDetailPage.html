@@ -15,7 +15,7 @@
 </head>
 
 
-<body onload="DisplayonDiv();">
+<body onload="getDataOnPage();">
     
     <div class="container-fluid p-0">
         <div class="row m-0">
@@ -92,7 +92,7 @@
                             </div>
 
                             <div class="col-md-2 col-sm-2 col-4">  
-                                    <a href="NewAccountEditPage.html"><button type="button" class="btn btn-primary mt-3 w-100 ">Edit</button></a>
+                                   <button type="button" class="btn btn-primary mt-3 w-100 " data-bs-toggle="modal" data-bs-target="#exampleModal2" onclick="editDataOnPage()">Edit</button>
                             </div>
                         </div>
 
@@ -152,6 +152,11 @@
                                     </div>
                                 
                                 </div>   
+
+
+
+                         
+
 
                                     <div class="row">
                                         <div class="col-7 col-sm-7 col-md-10 mt-4">
@@ -257,6 +262,117 @@
         </div>
 
     </div>
+
+    <!-- Modal for Update -->
+
+    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl" style="margin-right:20px">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Update Account</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+           
+
+                <form class=" m-2  contact-form"  id="contactForm" onsubmit="return false">
+                    <div class="modal-body">
+                    
+                        <div class="row m-3">
+                            <div class="col-sm-6">
+                                <label for="accountName" class="form-label mt-3">Account
+                                    Name <span style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="editAccountName"
+                                    placeholder="" value="" required>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label for="accountNumber" class="form-label mt-3">Account
+                                    Number <span style="color:red">*</span></label>
+                                <input type="text" class="form-control"
+                                    id="editAccountNumber" placeholder="" required disabled>
+                            </div>
+
+
+                            <div class="col-sm-6">
+                                <label for="email" class="form-label mt-3">Email <span
+                                        style="color:red">*</span></label>
+                                <input type="email" class="form-control" id="editEmail"
+                                    placeholder="" required>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <label for="phone" class="form-label mt-3">Phone <span
+                                        style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="editPhone"
+                                    placeholder="" minlength="10" maxlength="10" required>
+                            </div>
+
+                            <div class="col-12">
+                                <label for="address" class="form-label mt-3">Address <span
+                                        style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="editAddress"
+                                    placeholder="" required>
+                            </div>
+
+
+                            <div class="col-sm-6">
+                                <label for="city" class="form-label mt-3">City <span
+                                        style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="editCity"
+                                    placeholder="" required>
+                            </div>
+
+
+
+                            <div class="col-md-6">
+                                <label for="country" class="form-label mt-3">Country <span
+                                        style="color:red">*</span></label>
+                                <select class="form-select" id="getCountry" required
+                                    >
+                                    <option value="">Choose...</option>
+                                    <!-- <option>India</option>
+                                    <option>U.S.A</option>  -->
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="state" class="form-label mt-3">State <span
+                                        style="color:red">*</span></label>
+                                <select class="form-select" id="getState" required>
+                                    <option value="">Choose...</option>
+                                    <!-- <option>xyz</option>
+                                              <option>1xyz</option> -->
+                                </select>
+                            </div>
+
+
+
+                            <div class="col-sm-6">
+                                <label for="zip" class="form-label mt-3">Zip <span
+                                        style="color:red">*</span></label>
+                                <input type="text" class="form-control" id="editZip"
+                                    placeholder="" required>
+                            </div>
+
+
+                        </div>                        
+                
+                    </div> 
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" onclick="editAccount()" data-bs-dismiss="modal">Update</button>
+                    </div>
+
+                </form>
+
+            
+           
+        
+        </div>
+    </div>
+
+</div>
 
     </div>
     

@@ -1,3 +1,241 @@
+function getData(){
+  fetch('http://localhost:3000/account').then((response)=>{
+      if(response.ok){
+        return response.json();
+      }
+      else
+      {
+        alert("Not Found Data");
+      }
+  }).then((data)=>{
+    //console.log("testing for api",data)
+    for(let i=0; data.length; i++){
+      let uiString = `<tr> 
+      <td>${data[i].accountName}</td>
+      <td>${data[i].accountNumber}</td>
+      <td> <div>${data[i].accountCountry}
+          <button class ="btn btn-primary viewbtn" id=viewbtn_${data[i].accountId} onclick="viewBtnClick(${data[i].accountId});">View</button> </div>
+      </td>                
+  </tr>`;
+
+tableBody.innerHTML += uiString;
+    }
+  }).catch((err)=>{
+    console.log("404 not found",err)
+  })
+  
+}
+
+
+
+function getDataOnPage(acccountId){
+  let myKeysValues = window.location.search;
+
+let urlParam = new URLSearchParams(myKeysValues);
+
+let param = urlParam.get('accountId');
+accountId = param
+
+  fetch(`http://localhost:3000/account/${accountId}`).then((response)=>{
+      return response.json();
+  }).then((data2)=>{
+    console.log("testing for api",data2)
+
+    let displayName = document.getElementById("displayName");
+    let displayAccountNo = document.getElementById("displayAccountNo"); 
+    let displayEmail  = document.getElementById("displayEmail"); 
+    let displayPhone = document.getElementById("displayPhone"); 
+    let displayAddress = document.getElementById("displayAddress");
+    let displayCity = document.getElementById("displayCity");
+    let displayState = document.getElementById("displayState");
+    let displayCountry = document.getElementById("displayCountry");
+    let displayZip = document.getElementById("displayZip");
+   
+    displayName.textContent = data2[0].accountName;
+    displayAccountNo.textContent = data2[0].accountNumber;
+    displayEmail.textContent = data2[0].accountEmail;
+    displayPhone.textContent = data2[0].accountPhone;
+    displayAddress.textContent = data2[0].accountAddress;
+    displayCity.textContent = data2[0].accountCity;
+    displayState.textContent = data2[0].accountState;
+    displayCountry.textContent = data2[0].accountCountry;
+    displayZip.textContent = data2[0].accountZipCode;
+
+   
+  }).catch((err)=>{
+    console.log("404 not found",err)
+  })
+
+
+
+  // code for Contail Detail
+fetch(`http://localhost:3000/account/contact/${accountId}`).then((response)=>{
+  return response.json();
+}).then((data4)=>{
+  console.log("tes conys",data4)
+  contactDiv = document.getElementById('contactDiv');
+  let html =
+
+      `<div class="col-md-5 detailpage m-3 p-2">
+                          <span><span>Name: </span>${data4[0].firstName + " " + data4[0].lastName}</span><br>
+                          <span><span>Title: </span>${data4[0].contactTitle}</span><br>
+                          <span><span>Email: </span>${data4[0].contactEmail}</span><br>
+                          <span><span>Phone: </span>${data4[0].contactPhone}</span><br>
+                  </div>`;
+
+  contactDiv.innerHTML += html;
+}).catch((err)=>{
+    console.log("404 not found",err)
+  })
+
+}
+
+
+
+
+function postData(){
+
+  // const request = new XMLHttpRequest();
+  //   request.open('POST', `http://localhost:3000/account`)
+  //   console.log(request);
+
+  //   request.setRequestHeader('Content-Type', 'application/json; charset= UTF-8')
+
+  let accountName = document.getElementById('getAccountName').value;
+  let accountNumber = document.getElementById('getAccountNumber').value;
+  let email = document.getElementById('getEmail').value;
+  let phone = document.getElementById('getPhone').value;
+  let address = document.getElementById('getAddress').value;
+  let city = document.getElementById('getCity').value;
+  let state = document.getElementById('getState').value;
+  let country = document.getElementById('getCountry').value;
+  let zip = document.getElementById('getZip').value;
+
+//   let body = JSON.stringify({
+//           accountName: accountName,
+//           accountNumber: accountNumber,
+//           accountEmail: email,
+//           accountPhone: phone,
+//           accountAddress: address,
+//           accountCity: city,
+//           accountState: state,
+//           accountCountry: country,
+//           accountZipCode: zip
+// })
+// request.send(body);
+
+  fetch('http://localhost:3000/account', {
+        method: 'POST',
+        
+        body: JSON.stringify({
+          accountId: accountNumber,
+          accountName: accountName,
+          accountNumber: accountNumber,
+          accountEmail: email,
+          accountPhone: phone,
+          accountAddress: address,
+          accountCity: city,
+          accountState: state,
+          accountCountry: country,
+          accountZipCode: zip
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+      }
+    }).then((response)=>{
+        return response.json
+    }).then((postbody)=>{
+      console.log('testing',postbody);
+      document. location. reload()
+    })
+}
+
+
+
+//Code for Update
+function editAccount(accountId) {
+
+  let myKeysValues = window.location.search;
+  let urlParam = new URLSearchParams(myKeysValues);
+  let param = urlParam.get('accountId');
+  accountId = param;
+
+  let accountName = document.getElementById('editAccountName').value;
+  let accountNumber = document.getElementById('editAccountNumber').value;
+  let email = document.getElementById('editEmail').value;
+  let phone = document.getElementById('editPhone').value;
+  let address = document.getElementById('editAddress').value;
+  let city = document.getElementById('editCity').value;
+  let state = document.getElementById('getState').value;
+  let country = document.getElementById('getCountry').value;
+  let zip = document.getElementById('editZip').value;
+
+
+  fetch(`http://localhost:3000/account/${accountId}`, {
+        method: 'PUT',
+        
+        body: JSON.stringify({
+          accountId: accountNumber,
+          accountName: accountName,
+          accountNumber: accountNumber,
+          accountEmail: email,
+          accountPhone: phone,
+          accountAddress: address,
+          accountCity: city,
+          accountState: state,
+          accountCountry: country,
+          accountZipCode: zip
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+      }
+    }).then((response)=>{
+        return response.json
+    }).then((postbody)=>{
+      console.log('testing',postbody);
+      document. location. reload()
+    })
+
+
+}
+
+
+
+
+//code bring data in update input
+
+function editDataOnPage(acccountId){
+  let myKeysValues = window.location.search;
+
+let urlParam = new URLSearchParams(myKeysValues);
+
+let param = urlParam.get('accountId');
+accountId = param
+
+  fetch(`http://localhost:3000/account/${accountId}`).then((response)=>{
+      return response.json();
+  }).then((data3)=>{
+    console.log("testing for api",data3)
+
+   document.getElementById('editAccountName').value = data3[0].accountName;
+   document.getElementById('editAccountNumber').value = data3[0].accountNumber;
+   document.getElementById('editEmail').value = data3[0].accountEmail;
+   document.getElementById('editPhone').value = data3[0].accountPhone;
+   document.getElementById('editAddress').value = data3[0].accountAddress;
+   document.getElementById('editCity').value = data3[0].accountCity;
+   document.getElementById('getState').value = data3[0].accountState;
+   document.getElementById('getCountry').value = data3[0].accountCountry;
+   document.getElementById('editZip').value = data3[0].accountZipCode;
+
+   
+  }).catch((err)=>{
+    console.log("404 not found",err)
+  })
+
+
+}
+
+
 let  accountUser=[];
 
 
@@ -14,18 +252,18 @@ console.log(param);
 
 
 //Constructor
-function AccountData(id,accountName, accountNumber, email, phone, address, city, state, country, zip) {
-    this.id = id;
-    this.accountName = accountName;
-    this.accountNumber = accountNumber;
-    this.email = email;
-    this.phone = phone;
-    this.address = address;
-    this.city = city;
-    this.state = state;
-    this.country = country;
-    this.zip = zip;
-}
+// function AccountData(id,accountName, accountNumber, email, phone, address, city, state, country, zip) {
+//     this.id = id;
+//     this.accountName = accountName;
+//     this.accountNumber = accountNumber;
+//     this.email = email;
+//     this.phone = phone;
+//     this.address = address;
+//     this.city = city;
+//     this.state = state;
+//     this.country = country;
+//     this.zip = zip;
+// }
 
 //Display Constructor
 function Display() {
@@ -69,32 +307,32 @@ function creat() {
 
 
 
-    let accountName = document.getElementById('getAccountName').value;
-    let accountNumber = document.getElementById('getAccountNumber').value;
-    let email = document.getElementById('getEmail').value;
-    let phone = document.getElementById('getPhone').value;
-    let address = document.getElementById('getAddress').value;
-    let city = document.getElementById('getCity').value;
-    let state = document.getElementById('getState').value;
-    let country = document.getElementById('getCountry').value;
-    let zip = document.getElementById('getZip').value;
+    // let accountName = document.getElementById('getAccountName').value;
+    // let accountNumber = document.getElementById('getAccountNumber').value;
+    // let email = document.getElementById('getEmail').value;
+    // let phone = document.getElementById('getPhone').value;
+    // let address = document.getElementById('getAddress').value;
+    // let city = document.getElementById('getCity').value;
+    // let state = document.getElementById('getState').value;
+    // let country = document.getElementById('getCountry').value;
+    // let zip = document.getElementById('getZip').value;
     
-    let accountData = new AccountData(accountUser.length+0,accountName, accountNumber, email, phone, address, city, state, country, zip)
+    // let accountData = new AccountData(accountUser.length+0,accountName, accountNumber, email, phone, address, city, state, country, zip)
 
 
 
-    let accountUserData=localStorage.getItem("accountUserData");
-    if(accountUserData==null){
-        accountUser=[];
-    }
+    // let accountUserData=localStorage.getItem("accountUserData");
+    // if(accountUserData==null){
+    //     accountUser=[];
+    // }
 
-    else{
-        accountUser=JSON.parse(accountUserData);
-    }
+    // else{
+    //     accountUser=JSON.parse(accountUserData);
+    // }
 
-    accountUser.push(accountData);
-    localStorage.setItem("accountUserData", JSON.stringify(accountUser));
-    console.log('testing',accountUser);
+    // accountUser.push(accountData);
+    // localStorage.setItem("accountUserData", JSON.stringify(accountUser));
+    // console.log('testing',accountUser);
 
     
     let display = new Display();
@@ -124,7 +362,7 @@ function creat() {
                     // event.preventDefault();
                     // event.stopPropagation();
                 } else {
-                    creat()
+                    postData()
                     $('#exampleModal').modal('hide')
                     
                 }
@@ -139,43 +377,41 @@ function creat() {
 
 
 //Transfer data one page to another page
-function DisplayonDiv(){
+// function DisplayonDiv(){
 
-    let displayName = document.getElementById("displayName");
-    let displayAccountNo = document.getElementById("displayAccountNo"); 
-    let displayEmail  = document.getElementById("displayEmail"); 
-    let displayPhone = document.getElementById("displayPhone"); 
-    let displayAddress = document.getElementById("displayAddress");
-    let displayCity = document.getElementById("displayCity");
-    let displayState = document.getElementById("displayState");
-    let displayCountry = document.getElementById("displayCountry");
-    let displayZip = document.getElementById("displayZip");
+//     let displayName = document.getElementById("displayName");
+//     let displayAccountNo = document.getElementById("displayAccountNo"); 
+//     let displayEmail  = document.getElementById("displayEmail"); 
+//     let displayPhone = document.getElementById("displayPhone"); 
+//     let displayAddress = document.getElementById("displayAddress");
+//     let displayCity = document.getElementById("displayCity");
+//     let displayState = document.getElementById("displayState");
+//     let displayCountry = document.getElementById("displayCountry");
+//     let displayZip = document.getElementById("displayZip");
    
 
-    let displayData = localStorage.getItem("accountUserData", JSON.stringify(accountUser));
+//     let displayData = localStorage.getItem("accountUserData", JSON.stringify(accountUser));
 
-   let alldisplayData=JSON.parse(displayData);
+//    let alldisplayData=JSON.parse(displayData);
 
-   //for(let i=0; i<AlldisplayData.length;i++)
-    console.log('testiing for Display',alldisplayData);
+//    //for(let i=0; i<AlldisplayData.length;i++)
+//     console.log('testiing for Display',alldisplayData);
 
-    displayName.textContent = alldisplayData[param].accountName;
-    displayAccountNo.textContent = alldisplayData[param].accountNumber;
-    displayEmail.textContent = alldisplayData[param].email;
-    displayPhone.textContent = alldisplayData[param].phone;
-    displayAddress.textContent = alldisplayData[param].address;
-    displayCity.textContent = alldisplayData[param].city;
-    displayState.textContent = alldisplayData[param].state;
-    displayCountry.textContent = alldisplayData[param].country;
-    displayZip.textContent = alldisplayData[param].zip;
+//     displayName.textContent = alldisplayData[param].accountName;
+//     displayAccountNo.textContent = alldisplayData[param].accountNumber;
+//     displayEmail.textContent = alldisplayData[param].email;
+//     displayPhone.textContent = alldisplayData[param].phone;
+//     displayAddress.textContent = alldisplayData[param].address;
+//     displayCity.textContent = alldisplayData[param].city;
+//     displayState.textContent = alldisplayData[param].state;
+//     displayCountry.textContent = alldisplayData[param].country;
+//     displayZip.textContent = alldisplayData[param].zip;
    
     
 
-    }
+//     }
 
-   function clearStorage(){
-    localStorage.clear();
-   } ;
+   
 
 
 
